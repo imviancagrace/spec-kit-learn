@@ -154,4 +154,4 @@ After writing `learn.md`, output:
 - Path to the generated file
 - Count of decisions documented
 - Count of concepts covered
-- A one-line suggestion: if the user wants to dive deeper into any specific topic, they can re-run with a scoped argument (e.g., `/speckit.learn state management`)
+- A one-line suggestion: if the user wants to dive deeper into any specific topic, they can re-run with a scoped argument (e.g., `/speckit.learn.review state management`)

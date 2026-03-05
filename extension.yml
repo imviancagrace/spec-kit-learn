@@ -7,6 +7,7 @@ extension:
   description: "Generate educational guides from implementations and enhance clarifications with mentoring context"
   author: "Vianca Martinez"
   repository: "https://github.com/imviancagrace/spec-kit-learn"
+  homepage: "https://github.com/imviancagrace/spec-kit-learn"
   license: "MIT"
 
 requires:
@@ -17,7 +18,7 @@ requires:
 
 provides:
   commands:
-    - name: "speckit.learn"
+    - name: "speckit.learn.review"
       file: "commands/learn.md"
       description: "Generate a concise educational guide explaining the technical decisions, patterns, and concepts applied during feature implementation"
 
@@ -27,7 +28,7 @@ provides:
 
 hooks:
   after_implement:
-    command: "speckit.learn"
+    command: "speckit.learn.review"
     optional: true
     prompt: "Generate a learning guide from this implementation?"
 

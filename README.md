@@ -8,10 +8,10 @@ This extension adds two commands:
 
 | Command | Description |
 |---------|-------------|
-| `/speckit.learn` | Generates a `learn.md` guide explaining the technical decisions, patterns, and concepts applied during implementation |
+| `/speckit.learn.review` | Generates a `learn.md` guide explaining the technical decisions, patterns, and concepts applied during implementation |
 | `/speckit.learn.clarify` | Enhanced `/speckit.clarify` that includes "Why this matters" context, pros/cons analysis, and recommended options for each clarification |
 
-### `/speckit.learn` — Learn from what was built
+### `/speckit.learn.review` — Learn from what was built
 
 After running `/speckit.implement`, this command analyzes the completed work and produces a concise `learn.md` that covers:
 
@@ -77,15 +77,15 @@ specify extension list
 After completing implementation, run:
 
 ```
-/speckit.learn
+/speckit.learn.review
 ```
 
 Optionally scope to a specific phase, ticket, or topic:
 
 ```
-/speckit.learn Phase 3
-/speckit.learn PROJ-456
-/speckit.learn state management
+/speckit.learn.review Phase 3
+/speckit.learn.review PROJ-456
+/speckit.learn.review state management
 ```
 
 This will:
@@ -115,7 +115,7 @@ When enabled, the extension prompts you to generate a learning guide automatical
 
 ### learn.md
 
-Created by `/speckit.learn` in your feature directory. Structured as:
+Created by `/speckit.learn.review` in your feature directory. Structured as:
 
 ```markdown
 # What I Learned: [Feature Name]
