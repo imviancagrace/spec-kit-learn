@@ -4,12 +4,13 @@ A [Spec Kit](https://github.com/github/spec-kit) extension that generates educat
 
 ## What it does
 
-This extension adds two commands:
+This extension adds three commands:
 
 | Command | Description |
 |---------|-------------|
 | `/speckit.learn.review` | Generates a `learn.md` guide explaining the technical decisions, patterns, and concepts applied during implementation |
 | `/speckit.learn.clarify` | Enhanced `/speckit.clarify` that includes "Why this matters" context, pros/cons analysis, and recommended options for each clarification |
+| `/speckit.learn.diagrams` | Generates Mermaid-illustrated Markdown files for component diagrams, system design, and software architecture with spec-grounded reasoning |
 
 ### `/speckit.learn.review` — Learn from what was built
 
@@ -21,6 +22,16 @@ After running `/speckit.implement`, this command analyzes the completed work and
 - **Glossary** — domain-specific or framework-specific terms worth knowing
 
 The guide is written in a mentoring tone — direct, practical, and focused on building transferable judgment rather than narrating code.
+
+### `/speckit.learn.diagrams` — Visualize the architecture
+
+After running `/speckit.plan`, this command generates Mermaid-illustrated Markdown files that visualize the designed architecture with reasoning explaining **why** each structural choice was made. Supports three diagram types:
+
+- **Component Diagram** (`--cd`) — components, data flow, module boundaries, and dependency relationships
+- **System Design** (`--sd`) — infrastructure topology: databases, caches, queues, external services, and request flows
+- **Software Architecture** (`--sa`) — architectural layers, patterns, dependency direction, and module organization
+
+The `--all` flag (default) is scope-aware: it detects whether the spec describes a new project, a major feature introducing new infrastructure, or a feature-scoped change — and generates only the diagram types that are meaningful for that scope.
 
 ### `/speckit.learn.clarify` — Clarify with context
 
@@ -48,7 +59,7 @@ specify extension add learn
 Or install from the repository directly:
 
 ```bash
-specify extension add learn --from https://github.com/imviancagrace/spec-kit-learn/archive/refs/tags/v1.0.0.zip
+specify extension add learn --from https://github.com/imviancagrace/spec-kit-learn/archive/refs/tags/v1.1.0.zip
 ```
 
 ### From a local clone
@@ -65,9 +76,9 @@ After installation, verify:
 specify extension list
 
 # Should show:
-#  ✓ Learning Extension (v1.0.0)
+#  ✓ Learning Extension (v1.1.0)
 #     Generate educational guides from implementations and enhance clarifications with mentoring context
-#     Commands: 2 | Hooks: 1 | Status: Enabled
+#     Commands: 3 | Hooks: 1 | Status: Enabled
 ```
 
 ## Usage
@@ -94,6 +105,31 @@ This will:
 - Prioritize content by educational value
 - Write `learn.md` to your feature directory
 
+### Generating architecture diagrams
+
+After planning, run:
+
+```
+/speckit.learn.diagrams
+```
+
+This generates all applicable diagram types based on the spec's scope. To generate specific diagram types:
+
+```
+/speckit.learn.diagrams --cd
+/speckit.learn.diagrams --sd --sa
+/speckit.learn.diagrams --cd Phase 3
+```
+
+| Flag | Output |
+|------|--------|
+| `--all` (default) | Scope-dependent: all applicable diagrams |
+| `--cd` | `component-diagram.md` |
+| `--sd` | `system-design.md` |
+| `--sa` | `software-architecture.md` |
+
+Each generated file contains Mermaid diagrams and reasoning sections explaining why each architectural choice was made, grounded in `plan.md`, `research.md`, and `spec.md`.
+
 ### Clarifying with learning context
 
 Before planning, run:
@@ -112,6 +148,32 @@ This works like `/speckit.clarify` but each question includes:
 When enabled, the extension prompts you to generate a learning guide automatically after `/speckit.implement` completes.
 
 ## Artifacts
+
+### component-diagram.md / system-design.md / software-architecture.md
+
+Created by `/speckit.learn.diagrams` in your feature directory. Each file contains Mermaid diagrams with reasoning sections. Example structure (`component-diagram.md`):
+
+```markdown
+# Component Diagram: [Feature Name]
+
+**Feature**: Browse filing guides by state
+**Generated**: 2026-03-26
+
+---
+
+## Component Diagram
+
+(Mermaid diagram here)
+
+## Component Breakdown
+### StateSelector
+**Role**: Handles state selection and validates against available jurisdictions
+**Why this exists as a separate component**: ...
+
+## Design Reasoning
+### Why this structure?
+...
+```
 
 ### learn.md
 

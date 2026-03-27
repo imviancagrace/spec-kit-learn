@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: "learn"
   name: "Learning Extension"
-  version: "1.0.0"
+  version: "1.1.0"
   description: "Generate educational guides from implementations and enhance clarifications with mentoring context"
   author: "Vianca Martinez"
   repository: "https://github.com/imviancagrace/spec-kit-learn"
@@ -14,6 +14,7 @@ requires:
   speckit_version: ">=0.1.0"
   commands:
     - "speckit.specify"
+    - "speckit.plan"
     - "speckit.implement"
 
 provides:
@@ -25,6 +26,10 @@ provides:
     - name: "speckit.learn.clarify"
       file: "commands/clarify.md"
       description: "Clarify spec ambiguities with pros/cons analysis, recommendations, and mentoring context that builds senior-level thinking"
+
+    - name: "speckit.learn.diagrams"
+      file: "commands/diagrams.md"
+      description: "Generate Mermaid-illustrated diagram files (component, system design, software architecture) with reasoning derived from core spec artifacts"
 
 hooks:
   after_implement:

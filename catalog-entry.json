@@ -3,8 +3,8 @@
   "id": "learn",
   "description": "Generate educational guides from implementations and enhance clarifications with mentoring context",
   "author": "Vianca Martinez",
-  "version": "1.0.0",
-  "download_url": "https://github.com/imviancagrace/spec-kit-learn/archive/refs/tags/v1.0.0.zip",
+  "version": "1.1.0",
+  "download_url": "https://github.com/imviancagrace/spec-kit-learn/archive/refs/tags/v1.1.0.zip",
   "repository": "https://github.com/imviancagrace/spec-kit-learn",
   "homepage": "https://github.com/imviancagrace/spec-kit-learn",
   "documentation": "https://github.com/imviancagrace/spec-kit-learn/blob/main/README.md",
@@ -14,7 +14,7 @@
     "speckit_version": ">=0.1.0"
   },
   "provides": {
-    "commands": 2,
+    "commands": 3,
     "hooks": 1
   },
   "tags": [
